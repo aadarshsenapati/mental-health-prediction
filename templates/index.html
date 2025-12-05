@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Screening | WellCheck</title>
+    <link rel="stylesheet" href="/static/style_index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Mental Health Screening</h1>
+        <p class="subtitle">A confidential assessment to help understand your current mental wellbeing</p>
+    </div>
+
+    <div class="form-card">
+        <form action="/predict" method="POST">
+            <!-- Row 1 -->
+            <div class="row">
+                <label>Age</label>
+                <input type="number" name="age" min="12" max="100" placeholder="Enter your age" required>
+            </div>
+
+            <div class="row">
+                <label>BMI (Body Mass Index)</label>
+                <input type="number" step="0.1" name="bmi" placeholder="e.g., 22.5" required>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="row">
+                <label>Gender</label>
+                <select name="gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                    <option value="2">Non-binary</option>
+                    <option value="3">Prefer not to say</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label>Recent Suicidal Thoughts</label>
+                <select name="suicidal" required>
+                    <option value="" disabled selected>Select option</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="row">
+                <label>Daytime Sleepiness</label>
+                <select name="sleepiness" required>
+                    <option value="" disabled selected>Select level</option>
+                    <option value="0">Low (rarely sleepy)</option>
+                    <option value="1">High (often sleepy)</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label>Recent Anxiety Feelings</label>
+                <select name="anxiousness" required>
+                    <option value="" disabled selected>Select option</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="row">
+                <label>Previous Depression Diagnosis</label>
+                <select name="depression_diag" required>
+                    <option value="" disabled selected>Select option</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label>Current Depression Treatment</label>
+                <select name="depression_treat" required>
+                    <option value="" disabled selected>Select option</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="row">
+                <label>Previous Anxiety Diagnosis</label>
+                <select name="anxiety_diag" required>
+                    <option value="" disabled selected>Select option</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label>Current Anxiety Treatment</label>
+                <select name="anxiety_treat" required>
+                    <option value="" disabled selected>Select option</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-submit">Get Your Results</button>
+        </form>
+    </div>
+
+    <div class="footer-note">
+        <p>Your privacy is important. All responses are anonymous and encrypted.</p>
+        <p>If you're in crisis, please contact <a href="tel:988">988 Suicide & Crisis Lifeline</a> immediately.</p>
+    </div>
+</div>
+
+</body>
+</html>

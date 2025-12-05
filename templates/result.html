@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Results | WellCheck</title>
+    <link rel="stylesheet" href="/static/style_result.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Your Screening Results</h1>
+
+    <div class="results-container">
+        <!-- Depression Result Card -->
+        <div class="result-card depression">
+            <h2>Depression Severity</h2>
+            <div class="result-value">{{ dep }}</div>
+            
+            <!-- Severity Indicator -->
+            <div class="severity-indicator">
+                <div class="severity-fill" style="width: {{ dep_percentage }}%;"></div>
+            </div>
+            
+            <div class="result-description">
+                {% if dep == 'Minimal' %}
+                Your screening suggests minimal depressive symptoms at this time.
+                {% elif dep == 'Mild' %}
+                Your screening suggests mild depressive symptoms. Consider self-care strategies.
+                {% elif dep == 'Moderate' %}
+                Your screening suggests moderate depressive symptoms. Professional support may be helpful.
+                {% elif dep == 'Severe' %}
+                Your screening suggests severe depressive symptoms. Seeking professional support is recommended.
+                {% else %}
+                Based on your responses, this is your depression severity level.
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Anxiety Result Card -->
+        <div class="result-card anxiety">
+            <h2>Anxiety Severity</h2>
+            <div class="result-value">{{ anx }}</div>
+            
+            <!-- Severity Indicator -->
+            <div class="severity-indicator">
+                <div class="severity-fill" style="width: {{ anx_percentage }}%;"></div>
+            </div>
+            
+            <div class="result-description">
+                {% if anx == 'Minimal' %}
+                Your screening suggests minimal anxiety symptoms at this time.
+                {% elif anx == 'Mild' %}
+                Your screening suggests mild anxiety symptoms. Mindfulness techniques may help.
+                {% elif anx == 'Moderate' %}
+                Your screening suggests moderate anxiety symptoms. Consider speaking with a professional.
+                {% elif anx == 'Severe' %}
+                Your screening suggests severe anxiety symptoms. Professional support is recommended.
+                {% else %}
+                Based on your responses, this is your anxiety severity level.
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="/" class="btn btn-primary">Take Another Screening</a>
+        <button onclick="window.print()" class="btn btn-secondary">Save Results</button>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <p><strong>Important:</strong> This screening tool is not a diagnostic instrument. It is designed to help identify potential mental health concerns and should not replace professional medical advice, diagnosis, or treatment.</p>
+        <p>If you're experiencing distress, please contact a mental health professional or call <a href="https://icallhelpline.org/" style="color: var(--color-forest); font-weight: 600;">9152987821</a> for immediate support.</p>
+    </div>
+</div>
+
+<script>
+    // Add animation delays for visual feedback
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.result-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+    });
+</script>
+
+</body>
+</html>
