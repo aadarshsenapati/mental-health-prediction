@@ -22,6 +22,10 @@
     <div class="form-card">
         <form action="/predict" method="POST">
             <!-- Row 1 -->
+             <div class="row">
+                <label>School Year</label>
+                <input type="number" name="school_year" min="1" max="4" placeholder="Enter your school year" required>
+             </div>
             <div class="row">
                 <label>Age</label>
                 <input type="number" name="age" min="12" max="100" placeholder="Enter your age" required>
@@ -39,8 +43,6 @@
                     <option value="" disabled selected>Select gender</option>
                     <option value="1">Male</option>
                     <option value="0">Female</option>
-                    <option value="2">Non-binary</option>
-                    <option value="3">Prefer not to say</option>
                 </select>
             </div>
 
@@ -66,6 +68,14 @@
             <div class="row">
                 <label>Recent Anxiety Feelings</label>
                 <select name="anxiousness" required>
+                    <option value="" disabled selected>Select option</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="row">
+                <label>Recent Depressive Feelings</label>
+                <select name="depressiveness" required>
                     <option value="" disabled selected>Select option</option>
                     <option value="1">Yes</option>
                     <option value="0">No</option>

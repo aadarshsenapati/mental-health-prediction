@@ -43,26 +43,26 @@ def predict():
     suicidal = int(request.form["suicidal"])
     sleepiness = int(request.form["sleepiness"])
     anxiousness = int(request.form["anxiousness"])
-
+    depressiveness = int(request.form["depressiveness"])
     dep_diag = int(request.form["depression_diag"])
     dep_treat = int(request.form["depression_treat"])
 
     anx_diag = int(request.form["anxiety_diag"])
     anx_treat = int(request.form["anxiety_treat"])
+    school_year = int(request.form["school_year"])
 
     # ------------------------------------------------------
     #   Depression model → uses NO BMI and requires
     #   'anxiety_severity' and 'depressiveness'
     # ------------------------------------------------------
     dep_row = pd.DataFrame([{
-        "school_year": 1,
+        "school_year": school_year,
         "age": age,
         "gender": gender,
-        "depressiveness": 0,
+        "depressiveness": depressiveness,
         "suicidal": suicidal,
         "depression_diagnosis": dep_diag,
         "depression_treatment": dep_treat,
-        "anxiety_severity": 0,
         "anxiousness": anxiousness,
         "anxiety_diagnosis": anx_diag,
         "anxiety_treatment": anx_treat,
@@ -77,13 +77,15 @@ def predict():
     #  (we will feed it depression_model prediction)
     # ------------------------------------------------------
     anx_row = pd.DataFrame([{
-        "school_year": 1,
+        "school_year": school_year,
         "age": age,
         "gender": gender,
         "bmi": bmi,
         "depression_severity": dep_pred_val,   # using depression prediction as input
-        "depressiveness": 0,
+        "depressiveness": depressiveness,
+        
         "suicidal": suicidal,
+        "depression_diagnosis": dep_diag,
         "depression_treatment": dep_treat,
         "anxiousness": anxiousness,
         "anxiety_diagnosis": anx_diag,
